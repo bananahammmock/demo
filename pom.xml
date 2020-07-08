@@ -5,10 +5,10 @@
 
 	<groupId>com.baeldung</groupId>
 	<artifactId>spring-security-login-and-registration</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>latest</version>
 
 	<name>spring-security-login-and-registration</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -77,8 +77,8 @@
 
 		<!-- DB dependencies -->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 		</dependency>
 
 		<dependency>

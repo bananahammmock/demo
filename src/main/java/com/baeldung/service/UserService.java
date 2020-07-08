@@ -58,9 +58,9 @@ public class UserService implements IUserService {
     @Autowired
     private SessionRegistry sessionRegistry;
 
-    @Autowired
-    @Qualifier("GeoIPCountry")
-    private DatabaseReader databaseReader;
+//    @Autowired
+//    @Qualifier("GeoIPCountry")
+//    private DatabaseReader databaseReader;
 
     @Autowired
     private UserLocationRepository userLocationRepository;
@@ -90,6 +90,7 @@ public class UserService implements IUserService {
         user.setEmail(accountDto.getEmail());
         user.setUsing2FA(accountDto.isUsing2FA());
         user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
+        user.setEnabled(true);
         return userRepository.save(user);
     }
 
@@ -245,9 +246,10 @@ public class UserService implements IUserService {
     public NewLocationToken isNewLoginLocation(String username, String ip) {
         try {
             final InetAddress ipAddress = InetAddress.getByName(ip);
-            final String country = databaseReader.country(ipAddress)
-                .getCountry()
-                .getName();
+//            final String country = databaseReader.country(ipAddress)
+//                .getCountry()
+//                .getName();
+            final String country = "Polska gurom";
             System.out.println(country + "====****");
             final User user = userRepository.findByEmail(username);
             final UserLocation loc = userLocationRepository.findByCountryAndUser(country, user);
@@ -277,9 +279,10 @@ public class UserService implements IUserService {
     public void addUserLocation(User user, String ip) {
         try {
             final InetAddress ipAddress = InetAddress.getByName(ip);
-            final String country = databaseReader.country(ipAddress)
-                .getCountry()
-                .getName();
+//            final String country = databaseReader.country(ipAddress)
+//                .getCountry()
+//                .getName();
+            final String country = "Polska gurom";
             UserLocation loc = new UserLocation(country, user);
             loc.setEnabled(true);
             loc = userLocationRepository.save(loc);

@@ -33,20 +33,20 @@ public class DeviceService {
     private String from;
 
     private DeviceMetadataRepository deviceMetadataRepository;
-    private DatabaseReader databaseReader;
+//    private DatabaseReader databaseReader;
     private Parser parser;
-    private JavaMailSender mailSender;
+//    private JavaMailSender mailSender;
     private MessageSource messages;
 
     public DeviceService(DeviceMetadataRepository deviceMetadataRepository,
-                         @Qualifier("GeoIPCity") DatabaseReader databaseReader,
+//                         @Qualifier("GeoIPCity") DatabaseReader databaseReader,
                          Parser parser,
                          JavaMailSender mailSender,
                          MessageSource messages) {
         this.deviceMetadataRepository = deviceMetadataRepository;
-        this.databaseReader = databaseReader;
+//        this.databaseReader = databaseReader;
         this.parser = parser;
-        this.mailSender = mailSender;
+//        this.mailSender = mailSender;
         this.messages = messages;
     }
 
@@ -107,15 +107,15 @@ public class DeviceService {
 
         String location = UNKNOWN;
 
-        InetAddress ipAddress = InetAddress.getByName(ip);
-
-        CityResponse cityResponse = databaseReader.city(ipAddress);
-        if (Objects.nonNull(cityResponse) &&
-                Objects.nonNull(cityResponse.getCity()) &&
-                !Strings.isNullOrEmpty(cityResponse.getCity().getName())) {
-
-            location = cityResponse.getCity().getName();
-        }
+//        InetAddress ipAddress = InetAddress.getByName(ip);
+//
+//        CityResponse cityResponse = databaseReader.city(ipAddress);
+//        if (Objects.nonNull(cityResponse) &&
+//                Objects.nonNull(cityResponse.getCity()) &&
+//                !Strings.isNullOrEmpty(cityResponse.getCity().getName())) {
+//
+//            location = cityResponse.getCity().getName();
+//        }
 
         return location;
     }
@@ -152,7 +152,7 @@ public class DeviceService {
         notification.setText(text);
         notification.setFrom(from);
 
-        mailSender.send(notification);
+//        mailSender.send(notification);
     }
 
     private String getMessage(String code, Locale locale) {

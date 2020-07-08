@@ -16,8 +16,8 @@ public class DifferentLocationLoginListener implements ApplicationListener<OnDif
     @Autowired
     private MessageSource messages;
 
-    @Autowired
-    private JavaMailSender mailSender;
+//    @Autowired
+//    private JavaMailSender mailSender;
 
     @Autowired
     private Environment env;
@@ -39,7 +39,7 @@ public class DifferentLocationLoginListener implements ApplicationListener<OnDif
         email.setText(message);
         email.setFrom(env.getProperty("support.email"));
         System.out.println(message);
-        mailSender.send(email);
+//        mailSender.send(email);
     }
 
 }

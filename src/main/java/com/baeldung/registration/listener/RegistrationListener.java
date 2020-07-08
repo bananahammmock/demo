@@ -2,6 +2,7 @@ package com.baeldung.registration.listener;
 
 import java.util.UUID;
 
+import com.baeldung.persistence.dao.UserRepository;
 import com.baeldung.service.IUserService;
 import com.baeldung.persistence.model.User;
 import com.baeldung.registration.OnRegistrationCompleteEvent;
@@ -27,6 +28,9 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     @Autowired
     private Environment env;
 
+    @Autowired
+    private UserRepository userRepository;
+
     // API
 
     @Override
@@ -35,12 +39,12 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     }
 
     private void confirmRegistration(final OnRegistrationCompleteEvent event) {
-        final User user = event.getUser();
-        final String token = UUID.randomUUID().toString();
-        service.createVerificationTokenForUser(user, token);
+//        final User user = event.getUser();
+//        final String token = UUID.randomUUID().toString();
+//        service.createVerificationTokenForUser(user, token);
 
-        final SimpleMailMessage email = constructEmailMessage(event, user, token);
-        mailSender.send(email);
+//        final SimpleMailMessage email = constructEmailMessage(event, user, token);
+//        mailSender.send(email);
     }
 
     //
